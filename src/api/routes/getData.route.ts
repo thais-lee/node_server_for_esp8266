@@ -36,4 +36,13 @@ export default (app: Router) => {
     }
   });
 
+  route.get('/days/:day', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const getDataService = Container.get(getService);
+      const result = await getDataService.getLastDaysRecord(parseInt(req.params.day));
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  });
 };

@@ -30,10 +30,22 @@ class getApi {
   }
 
   //get both last Temperature and Humidity
-  getLastEntry(){
+  getLastEntry() {
     const url = this.getApiEndPoint + '/feeds/last.json';
     const params = {
       api_key: this.readKey,
+    };
+
+    return axiosRequest(url, axiosMethod.GET, params);
+  }
+
+  //get records of last 'day' record
+  //ex: last 2 days, last 3 days,...
+  getLastDays(day: number) {
+    const url = this.getApiEndPoint + '/feeds.json';
+    const params = {
+      api_key: this.readKey,
+      day: day,
     };
 
     return axiosRequest(url, axiosMethod.GET, params);
