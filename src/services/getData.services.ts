@@ -8,4 +8,19 @@ export default class getService {
     const result = await getApi.getLastTemp();
     return await result.data;
   }
+
+  public async getLastHumiRecord(): Promise<JSON> {
+    const result = await getApi.getLastHumi();
+    return await result.data;
+  }
+
+  public async getLastEntryRecord(): Promise<JSON> {
+    const result = await getApi.getLastEntry();
+    return await result.data;
+  }
+
+  public async getLastDaysRecord(day: number): Promise<JSON> {
+    const result = await getApi.getLastDays(day);
+    return await result.data;
+  }
 }
